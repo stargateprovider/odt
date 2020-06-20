@@ -26,6 +26,7 @@ var odOptions = {
 	},
 
 	success: function(files) {
+		ODDownload();
 		console.log(files);
 		alert(files);
 		var file = new Blob([files], {type: 'application/json'});
@@ -62,39 +63,42 @@ var odOptions = {
 
 
 function launchOneDrivePicker(){
+	let res = OneDrive.open(odOptions);
 
-	//OneDrive.open(odOptions);
-
-	const client = OneDrive.init(odOptions);
-	let res = client.api('/me/drive/root/children').get();
+	//const client = OneDrive.init(odOptions);
+	//let res = client.api('/me/drive/root/children').get();
 	console.log(res);
+}
+
+function ODDownload() {
+	const url = 'https://login.microsoftonline.com/common/oauth2/v2.0/token';
+	const url2 = 'https://graph.microsoft.com/v1.0/drive/root:/prog/python/uudised/config.json';
+    /*let headers = {
+        'Authorization': "Bearer " + JSON.parse(body).access_token,
+        'Content-Type': mime.getType(file)
+    };*/
+
+	fetch(url2, {method: "GET", headers: odOptions})
+		.then(data=>{console.log(data)})
+		.then(res=>{console.log(res)})
+		.catch(error=>{console.log(error)});
 }
 
 
 function ODUpload(){
-	var fs = require('fs');
-	var mime = require('mime');
-	var request = require('request');
-
 	var file = 'odt.html'; // Filename you want to upload on your local PC
 	var onedrive_folder = 'prog'; // Folder name on OneDrive
 	var onedrive_filename = 'upload.html'; // Filename on OneDrive
+	const url = 'https://login.microsoftonline.com/common/oauth2/v2.0/token';
+	const url2 = 'https://graph.microsoft.com/v1.0/drive/root:/prog/odt.html:/content';
+    /*let headers = {
+        'Authorization': "Bearer " + JSON.parse(body).access_token,
+        'Content-Type': mime.getType(file)
+    };*/
 
-	request.post({
-	    url: 'https://login.microsoftonline.com/common/oauth2/v2.0/token',
-	    form: odOptions,
-	}, function(error, response, body) {
-	    fs.readFile(file, function read(e, f) {
-	        request.put({
-	            url: 'https://graph.microsoft.com/v1.0/drive/root:/' + onedrive_folder + '/' + onedrive_filename + ':/content',
-	            headers: {
-	                'Authorization': "Bearer " + JSON.parse(body).access_token,
-	                'Content-Type': mime.getType(file), // When you use old version, please modify this to "mime.lookup(file)",
-	            },
-	            body: f,
-	        }, function(er, re, bo) {
-	            console.log(bo);
-	        });
-	    });
-	});
+	fetch(url2, {method: "POST", headers: odOptions})
+		.then(data=>{console.log(data)})
+		.then(res=>{console.log(res)})
+		.catch(error=>console.log(error));
+
 }
