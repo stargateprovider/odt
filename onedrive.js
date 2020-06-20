@@ -77,7 +77,7 @@ var saveOptions = {
   	openInNewWindow: false,
 	advanced: {
 		redirectUri: "https://stargateprovider.github.io/odt/odt.html",
-		
+
 	    navigation: {
 	      entryLocation: {
 	        sharePoint: {
@@ -142,7 +142,33 @@ function ODDownload() {
         'Content-Type': mime.getType(file)
     };*/
 
-	fetch(url2, {method: "GET", headers: odOptions})
+    var options = {
+		clientId: "5024a142-154d-45c4-9ca4-2013bca8919a",
+
+	    //client_secret: onedrive_client_secret,
+	    //refresh_token: onedrive_refresh_token,
+	    //grant_type: 'refresh_token'
+
+		action: "save",
+	  	//sourceInputElementId: "fileUploadControl",
+	  	sourceUri: "file:///C:/Users/kasutaja/prog/odt/odt.html",
+	  	filename: "file.txt",
+	  	openInNewWindow: false,
+		advanced: {
+			redirectUri: "https://stargateprovider.github.io/odt/odt.html",
+
+		    navigation: {
+		      entryLocation: {
+		        sharePoint: {
+		          itemPath: "22D9B7E9A1387531!21975"
+		        },
+		        disable: true
+		      }
+		    }
+		}
+	}
+
+	fetch(url2, {method: "GET", headers: options})
 		.then(data=>{console.log(data)})
 		.then(res=>{console.log(res)})
 		.catch(error=>{console.log(error)});
@@ -160,7 +186,7 @@ function ODUpload(){
         'Content-Type': mime.getType(file)
     };*/
 
-	fetch(url2, {method: "POST", headers: odOptions})
+	fetch(url2, {method: "POST", headers: saveOptions})
 		.then(data=>{console.log(data)})
 		.then(res=>{console.log(res)})
 		.catch(error=>console.log(error));
