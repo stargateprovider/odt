@@ -29,10 +29,11 @@ var odOptions = {
 		ODDownload();
 		console.log(files);
 		alert(files);
-		var file = new Blob([files.value[0]], {type: 'application/json'});
+		var file = new Blob([files.value[0]["@microsoft.graph.downloadUrl"]], {type: 'application/json'});
 
 		let a = document.createElement('a');
 		a.href = window.URL.createObjectURL(file);
+		a.href = files.value[0]["@microsoft.graph.downloadUrl"];
 		a.download = 'abc.json';
 		a.click();
 		//window.webkitURL.createObjectURL(file);
