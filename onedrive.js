@@ -23,7 +23,7 @@ var odOptions = {
 	        disable: true
 	      }
 	    }
-	}
+	},
 
 	success: function(files) {
 		console.log(files);
