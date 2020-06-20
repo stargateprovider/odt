@@ -36,8 +36,8 @@ function launchOneDrivePicker(){
 		multiSelect: true,
 		openInNewWindow: false,
 		advanced: {
-			//redirectUri: "https://stargateprovider.github.io/infoleht/customnewtab/odt.html",
-			redirectUri: "https://localhost",
+			redirectUri: "https://stargateprovider.github.io/odt/odt.html",
+			//redirectUri: "https://localhost",
 			queryParameters: "select=id,name,size,file,folder,@microsoft.graph.downloadUrl",
 			filter: "folder,.json",
 		    navigation: {
