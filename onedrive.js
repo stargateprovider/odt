@@ -27,15 +27,16 @@ var odOptions = {
 
 	success: function(files) {
 		ODDownload();
-		console.log(files);
-		alert(files);
-		var file = new Blob([files.value[0]["@microsoft.graph.downloadUrl"]], {type: 'application/json'});
+		//console.log(files);
+		//var file = new Blob([files.value[0]["@microsoft.graph.downloadUrl"]], {type: 'application/json'});
 
 		let a = document.createElement('a');
-		a.href = window.URL.createObjectURL(file);
+		//a.href = window.URL.createObjectURL(file);
 		a.href = files.value[0]["@microsoft.graph.downloadUrl"];
-		a.download = 'abc.json';
+		a.download = 'config.json';
 		a.click();
+
+		alert(a.href);
 		//window.webkitURL.createObjectURL(file);
 		// var odOptions = {
 		// 	clientId: "5024a142-154d-45c4-9ca4-2013bca8919a",
