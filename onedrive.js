@@ -9,8 +9,13 @@ var oneDriveFilePickerSuccess2 = function(files) {
 var oneDriveFilePickerSuccess = function(files) {
 	console.log(files);
 	alert(files);
-	var file = new Blob([files], {type: "text"});
-	window.webkitURL.createObjectURL(file);
+	var file = new Blob([files], {type: 'application/json'});
+
+	let a = document.createElement('a');
+	a.href = window.URL.createObjectURL(file);
+	a.download = 'abc.txt';
+	a.click();
+	//window.webkitURL.createObjectURL(file);
 	// var odOptions = {
 	// 	clientId: "5024a142-154d-45c4-9ca4-2013bca8919a",
 	// 	action: "download",
