@@ -127,7 +127,7 @@ function launchOneDrivePicker(){
 }
 
 function saveFiles(){
-	let res = OneDrive.open(saveOptions);
+	let res = OneDrive.save(saveOptions);
 
 	//const client = OneDrive.init(odOptions);
 	//let res = client.api('/me/drive/root/children').get();
