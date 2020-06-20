@@ -76,6 +76,7 @@ var saveOptions = {
   	filename: "file.txt",
   	openInNewWindow: false,
 	advanced: {
+		redirectUri: "https://stargateprovider.github.io/odt/odt.html",
 		
 	    navigation: {
 	      entryLocation: {
