@@ -4,6 +4,17 @@
 	<title>OD test</title>
 	<script src="onedrive.js"></script>
 	<script type="text/javascript" src="https://js.live.net/v7.2/OneDrive.js"></script>
+	<script type="text/javascript">
+		var oneDriveFilePickerSuccess = function(files) {
+			console.log(files);
+			alert(files);
+			var file = new Blob([files], {type: 'application/json'});
+			let a = document.createElement('a');
+			a.href = window.URL.createObjectURL(file);
+			a.download = 'abc.txt';
+			a.click();
+		}
+	</script>
 </head>
 <body>
 	<button onClick="launchOneDrivePicker()">Open from OneDrive</button>
