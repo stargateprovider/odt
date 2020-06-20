@@ -1,6 +1,6 @@
 // - customnewtab app ID: 5024a142-154d-45c4-9ca4-2013bca8919a
 
-var odOptions = {
+var queryOptions = {
 	clientId: "5024a142-154d-45c4-9ca4-2013bca8919a",
 
     //client_secret: onedrive_client_secret,
@@ -63,9 +63,70 @@ var odOptions = {
 	}
 }
 
+var saveOptions = {
+	clientId: "5024a142-154d-45c4-9ca4-2013bca8919a",
+
+    //client_secret: onedrive_client_secret,
+    //refresh_token: onedrive_refresh_token,
+    //grant_type: 'refresh_token'
+
+	action: "save",
+  	//sourceInputElementId: "fileUploadControl",
+  	sourceUri: "file:///C:/Users/kasutaja/prog/odt/odt.html",
+  	filename: "file.txt",
+  	openInNewWindow: false,
+	advanced: {
+		
+	    navigation: {
+	      entryLocation: {
+	        sharePoint: {
+	          itemPath: "22D9B7E9A1387531!21975"
+	        },
+	        disable: true
+	      }
+	    }
+	},
+
+	success: function(files) {
+		console.log(files);
+		// var odOptions = {
+		// 	clientId: "5024a142-154d-45c4-9ca4-2013bca8919a",
+		// 	action: "download",
+		// 	multiSelect: true,
+		// 	openInNewWindow: false,
+		// 	advanced: {
+		// 		redirectUri: "https://stargateprovider.github.io/customnewtab/odt.html",
+		// 		queryParameters: "select=id,name,size,file,folder,@microsoft.graph.downloadUrl",
+		// 		filter: "folder,.json",
+		// 		accessToken: files.accessToken
+		// 	},
+		// 	success: 'oneDriveFilePickerSuccess2',
+		// 	cancel: 'oneDriveFilePickerCancel',
+		// 	error: 'oneDriveFilePickerError'
+		// }
+		// OneDrive.open(odOptions);
+	},
+	cancel: function(e) {
+		console.log('OneDrive Launch Cancelled!');
+	},
+	error: function() {
+		console.log('OneDrive Launch Failed!');
+	}
+}
+
+
 
 function launchOneDrivePicker(){
-	let res = OneDrive.open(odOptions);
+	let res = OneDrive.open(queryOptions);
+
+	//const client = OneDrive.init(odOptions);
+	//let res = client.api('/me/drive/root/children').get();
+	console.log("Result: ")
+	console.log(res);
+}
+
+function saveFiles(){
+	let res = OneDrive.open(saveOptions);
 
 	//const client = OneDrive.init(odOptions);
 	//let res = client.api('/me/drive/root/children').get();
