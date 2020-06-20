@@ -73,20 +73,7 @@ var saveOptions = {
 	action: "save",
   	//sourceInputElementId: "fileUploadControl",
   	sourceUri: "file:///C:/Users/kasutaja/prog/odt/odt.html",
-  	filename: "file.txt",
-  	openInNewWindow: false,
-	advanced: {
-		redirectUri: "https://stargateprovider.github.io/odt/odt.html",
-
-	    navigation: {
-	      entryLocation: {
-	        sharePoint: {
-	          itemPath: "22D9B7E9A1387531!21975"
-	        },
-	        disable: true
-	      }
-	    }
-	},
+  	filename: "file.html",
 
 	success: function(files) {
 		console.log(files);
@@ -153,7 +140,6 @@ function ODDownload() {
 	  	//sourceInputElementId: "fileUploadControl",
 	  	sourceUri: "file:///C:/Users/kasutaja/prog/odt/odt.html",
 	  	filename: "file.txt",
-	  	openInNewWindow: false,
 		advanced: {
 			redirectUri: "https://stargateprovider.github.io/odt/odt.html",
 
