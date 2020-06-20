@@ -74,6 +74,9 @@ var saveOptions = {
   	//sourceInputElementId: "fileUploadControl",
   	sourceUri: "file:///C:/Users/kasutaja/prog/odt/odt.html",
   	filename: "file.html",
+  	advanced: {
+		redirectUri: "https://stargateprovider.github.io/odt/odt.html"
+	},
 
 	success: function(files) {
 		console.log(files);
