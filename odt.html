@@ -4,13 +4,31 @@
 	<title>OD test</title>
 	<script src="onedrive.js"></script>
 	<script type="text/javascript" src="https://js.live.net/v7.2/OneDrive.js"></script>
-
+	<style type="text/css">li>input{min-width: 200px}</style>
 </head>
 <body>
 	<button onclick="launchOneDrivePicker()">Open from OneDrive</button>
 	<button onclick="saveFiles()">Save to OneDrive</button>
 	<button onclick="ODDownload()">Download test</button>
 	<button onclick="ODUpload()">Upload test</button>
+
+	<ol>
+		<li>clientId:<input type="text" id="clientIdInput"></li>
+		<li>authtoken:<input type="text" id="tokenInput"></li>
+		<li>authcode:<input type="text" id="authcodeInput"></li>
+		<li>usersecret:<input type="text" id="secretInput"></li>
+		<li>userId:<input type="text" id="userIdInput"></li>
+	</ol>
+	<button onclick="setValues()">Set</button>
+
+	<ol>
+		<li id="clientIdDiv"></li>
+		<li id="tokenDiv"></li>
+		<li id="authcodeDiv"></li>
+		<li id="secretDiv"></li>
+		<li id="userIdDiv"></li>
+	</ol>
+
 	<div id="content"></div>
 </body>
 </html>
